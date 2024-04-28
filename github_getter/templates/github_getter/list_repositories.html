@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of GitHub Repositories</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+    <h1>List of GitHub Repositories</h1>
+    <ul>
+        {% for repo in repositories %}
+            <li class="repo-item">
+                <img src="{{ repo.avatar_url }}" alt="Avatar" class="repo-avatar">
+                <div class="repo-content">
+                    <a href="{{ repo.html_url }}" class="repo-link">{{ repo.name }}</a>
+                    <p class="repo-stars"><i class="fas fa-star"></i> Stars: {{ repo.stargazers_count }}</p>
+                    <p class="repo-description">{{ repo.description }}</p>
+                    <p class="repo-created">Created at: {{ repo.created_at }}</p>
+                    <p class="repo-created">Language: {{ repo.language }}</p>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if repositories.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ repositories.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ repositories.number }} of {{ repositories.paginator.num_pages }}.
+            </span>
+
+            {% if repositories.has_next %}
+                <a href="?page={{ repositories.next_page_number }}">next</a>
+                <a href="?page={{ repositories.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    </div>
+</body>
+</html>
