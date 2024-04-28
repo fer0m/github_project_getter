@@ -42,14 +42,13 @@ Using Docker simplifies the setup process and eliminates the need for manual con
    ```bash
    docker-compose up --build
     ```
-
+4. Go to http://0.0.0.0/github_repos/
 ### Option 2: Manual Setup
 If you prefer not to use Docker, follow these steps to set up the environment manually:
 
-
 1. Clone the repo
    ```bash
-   git clone https://github.com/yourusername/github-project-getter.git
+   git clone https://github.com/fer0m/github_project_getter.git
     ```
 
 2. Create and activate a virtual environment
