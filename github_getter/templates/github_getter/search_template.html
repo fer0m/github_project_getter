@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repositories</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Repositories Search</h1>
+        <button id="toggleButton">Show/Hide Search</button>
+        <button id="showReposButton" onclick="window.location.href='{% url 'list_repositories' %}';">Show Repos</button>
+
+        <form id="search_form" method="get" action="{% url 'search_results' %}" style="display: none;">
+            <label for="language">Language:</label>
+            <input type="text" id="language" name="language" placeholder="e.g., Python">
+            <label for="per_page">Results per page:</label>
+            <input type="number" id="per_page" name="per_page" min="1" max="100" value="10">
+            <label for="start_date">Start Date:</label>
+            <input type="date" id="start_date" name="start_date">
+            <input type="hidden" name="search" value="1">
+            <button type="submit" id="search_button">Search</button>
+        </form>
+
+        {% if info %}
+        <div class="info">
+            <p>{{ info }}</p>
+        </div>
+        {% endif %}
+
+        <ul>
+        {% for repo in repositories %}
+            <li class="repo-item">
+                <img src="{{ repo.avatar_url }}" alt="Avatar" class="repo-avatar">
+                <div class="repo-content">
+                    <a href="{{ repo.html_url }}" class="repo-link">{{ repo.name }}</a>
+                    <p class="repo-stars"><i class="fas fa-star"></i> Stars: {{ repo.stargazers_count }}</p>
+                    <p class="repo-description">{{ repo.description }}</p>
+                    <p class="repo-created">Created at: {{ repo.created_at }}</p>
+                    <p class="repo-created">Language: {{ repo.language }}</p>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+
+
+<script>
+    $(function() {
+        $("#start_date").datepicker();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('search_button').addEventListener('click', function() {
+        var form = document.getElementById('search_form');
+        form.submit();
+    });
+    });
+
+    document.getElementById('toggleButton').addEventListener('click', function() {
+    var form = document.getElementById('search_form');
+    if (form.style.display === 'none') {
+        form.style.display = 'block';
+        this.textContent = 'Hide Search';
+    } else {
+        form.style.display = 'none';
+        this.textContent = 'Show Search';
+    }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var today = new Date().toISOString().slice(0, 10);
+        document.getElementById('start_date').value = today;
+    });
+
+
+</script>

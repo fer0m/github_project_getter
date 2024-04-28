@@ -1,0 +1,228 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+h1 {
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.repo-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.repo-avatar {
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.repo-content {
+    flex: 1;
+}
+
+.repo-link {
+    font-size: 18px;
+    color: #0077cc;
+    text-decoration: none;
+}
+
+.repo-link:hover {
+    text-decoration: underline;
+}
+
+.repo-stars {
+    font-size: 16px;
+    color: #ffac33;
+}
+
+.repo-stars i {
+    margin-right: 5px;
+}
+
+.repo-description {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.repo-created {
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
+}
+
+
+#search_form label {
+    margin: 10px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+#search_form {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#search_form input[type="text"],
+#search_form input[type="number"] {
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+#search_form input[type="text"]:focus,
+#search_form input[type="number"]:focus {
+    border-color: #0077cc;
+    outline: none;
+}
+
+#search_form input[type="text"],
+#search_form input[type="number"],
+#search_form input[type="date"] {
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+#search_form input[type="text"]:focus,
+#search_form input[type="number"]:focus,
+#search_form input[type="date"]:focus {
+    border-color: #0077cc;
+    outline: none;
+}
+
+#search_form button {
+    margin-left: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #0077cc;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#search_form button:hover {
+    background-color: #005fa3;
+}
+
+#search_form button:active {
+    background-color: #00407a;
+}
+
+#toggleButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#toggleButton:hover {
+    background-color: #45a049;
+}
+
+#toggleButton:active {
+    background-color: #3e8e41;
+}
+
+#showReposButton {
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#showReposButton:hover {
+    background-color: #1E88E5;
+}
+
+#showReposButton:active {
+    background-color: #1976D2;
+}
+
+
+.info {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+}
+
+/* Основные стили для блока пагинации */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.step-links {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Стилизация ссылок в пагинации */
+.step-links a {
+    color: #337ab7;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.step-links a:hover {
+    text-decoration: underline;
+    color: #23527c;
+}
+
+/* Стилизация для текущей страницы */
+.current {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+}
