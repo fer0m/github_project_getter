@@ -1,1 +1,1 @@
-# guthub_project_getter
+# github_project_getter
