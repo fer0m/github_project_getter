@@ -7,7 +7,8 @@ class ErrorHandlingMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
+        errors_to_redirect = [400, 404, 500]
         response = self.get_response(request)
-        if response.status_code == 500:
+        if response.status_code in errors_to_redirect:
             return HttpResponseRedirect(reverse('search_results'))
         return response
