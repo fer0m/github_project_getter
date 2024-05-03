@@ -4,6 +4,7 @@ RUN apt-get update
 
 WORKDIR /app
 
+ENV DEBUG='False'
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
